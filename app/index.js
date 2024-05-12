@@ -1,13 +1,12 @@
-import { View, Text } from 'react-native'
+import { View, Text, ActivityIndicator } from 'react-native'
 import React from 'react'
 import { StatusBar } from 'expo-status-bar'
 
 export default function Index() {
   return (
     
-    <View className = " bg-neutral-800  items-center justify-center">
-      <Text>First screen</Text>
-      <StatusBar style='dark'/>
+    <View className = "flex-1 justify-center items-center">
+      <ActivityIndicator size={"large"} color={"gray"} />
     </View>
   )
 }
