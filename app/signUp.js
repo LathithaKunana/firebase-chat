@@ -6,10 +6,12 @@ import { Feather, Octicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import Loading from '../components/Loading';
 import CustomKeyboardView from '../components/CustomKeyboardView';
+import { useAuth } from '../context/authContext';
 
 
 export default function SignUn() {
   const router = useRouter();
+  const {register} = useAuth();
   const [loading, setloading] = useState(false)
 
   const emailRef = useRef("");
@@ -19,16 +21,24 @@ export default function SignUn() {
 
   const handleRegister = async() => {
     if(!emailRef.current || !passwordRef.current || !usernameRef.current || !profileRef.current){
-      Alert.alert('Sign Up', 'Please fill all the fields.')
+      Alert.alert('Sign Up', 'Please fill all the fields.');
+      return;
     }
+    setloading(true);
 
-    //register process
+    let response = await register(emailRef.current, passwordRef.current, usernameRef.current, profileRef.current);
+    setloading(false);
+
+    console.log('got result: ',response)
+    if(!response.success){
+      Alert.alert('Sign Up', response.msg)
+    }
   }
 
   return (
     <CustomKeyboardView>
       <StatusBar style='dark' />
-      <View style={{paddingTop: hp(9)}} className="flex-1 space-y-12">
+      <View style={{paddingTop: hp(7)}} className="flex-1 space-y-12">
         {/* signIn image */}
         <View className="items-center">
           <Image style={{height: hp(20)}} resizeMode='contain' source={require('./../assets/images/register.png')} />

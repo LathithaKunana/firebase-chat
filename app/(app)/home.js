@@ -1,10 +1,17 @@
-import { View, Text } from 'react-native'
+import { View, Text, Button } from 'react-native'
 import React from 'react'
+import { useAuth } from '../../context/authContext'
 
 export default function Home() {
-  return (
-    <View>
-      <Text>Home</Text>
-    </View>
-  )
+    const {logout, user} = useAuth();
+    const handleLogout = async() => {
+        await logout();
+    }
+    console.log('Got the user: ', user)
+    return (
+        <View>
+        <Text>Home</Text>
+            <Button title='Sign Out' onPress={handleLogout} />
+        </View>
+    )
 }
