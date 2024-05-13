@@ -6,10 +6,12 @@ import { Octicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import Loading from '../components/Loading';
 import CustomKeyboardView from '../components/CustomKeyboardView';
+import { useAuth } from '../context/authContext';
 
 
 export default function SignIn() {
   const router = useRouter();
+  const {login} = useAuth();
   const [loading, setloading] = useState(false)
 
   const emailRef = useRef("");
@@ -17,9 +19,16 @@ export default function SignIn() {
 
   const handleLogin = async() => {
     if(!emailRef.current || !passwordRef.current){
-      Alert.alert('Sign In', 'Please fill all the fields.')
-    } else {
-      //login process
+      Alert.alert('Sign In', 'Please fill all the fields.');
+      return;
+    }
+
+    setloading(true);
+    const response = await login(emailRef.current, passwordRef.current);
+    setloading(false);
+    console.log('sign in response: ', response)
+    if(!response.success){
+      Alert.alert('Sign In', response.msg)
     }
   }
 
