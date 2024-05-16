@@ -26,7 +26,7 @@ export default function SignIn() {
     setloading(true);
     const response = await login(emailRef.current, passwordRef.current);
     setloading(false);
-    console.log('sign in response: ', response)
+    //console.log('sign in response: ', response)
     if(!response.success){
       Alert.alert('Sign In', response.msg)
     }
