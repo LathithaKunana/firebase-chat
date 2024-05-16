@@ -9,7 +9,7 @@ export default function Home() {
     }
     console.log('Got the user: ', user)
     return (
-        <View>
+        <View className = "flex-1 bg-white">
         <Text>Home</Text>
             <Button title='Sign Out' onPress={handleLogout} />
         </View>

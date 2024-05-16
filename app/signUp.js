@@ -29,7 +29,7 @@ export default function SignUn() {
     let response = await register(emailRef.current, passwordRef.current, usernameRef.current, profileRef.current);
     setloading(false);
 
-    console.log('got result: ',response)
+    //console.log('got result: ',response)
     if(!response.success){
       Alert.alert('Sign Up', response.msg)
     }
