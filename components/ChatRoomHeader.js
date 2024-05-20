@@ -32,7 +32,8 @@ export default function ChatRoomHeader({user,router}) {
                     <Ionicons name='call' size={hp(3)} color={'#737373'} />
                     <Ionicons name='videocam' size={hp(3)} color={'#737373'} />
                 </View>
-            )        }}
+            )
+        }}
     />
   )
 }
