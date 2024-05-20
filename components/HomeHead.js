@@ -30,7 +30,7 @@ export default function HomeHead() {
       await logout();
   }
   return (
-    <View
+    <Vie
       style={{ paddingTop: ios ? top : top + 10, backgroundColor: "#006F5E" }}
       className="flex-row justify-between items-center px-5 pb-6 rounded-b-xl shadow-md"
     >
