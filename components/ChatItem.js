@@ -5,7 +5,7 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import { Image } from "expo-image";
-import {blurhash, getRoomIds} from '../utilities/common'
+import {blurhash, formatDate, getRoomIds} from '../utilities/common'
 import { collection, doc, onSnapshot, orderBy, query } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 
@@ -36,7 +36,10 @@ export default function ChatItem({ item, router, noBorder, currentUser }) {
   }
 
   const renderTime = () => {
-    return 'time';
+    if(lastMessage) {
+      let date = lastMessage?.createdAt;
+      return formatDate(new Date(date?.seconds * 1000));
+    }
   }
 
   const renderLastMessage = () => {

@@ -32,10 +32,10 @@ export default function HomeHead() {
   return (
     <View
       style={{ paddingTop: ios ? top : top + 10, backgroundColor: "#006F5E" }}
-      className="flex-row justify-between px-5 pb-6 rounded-b-3xl shadow-md"
+      className="flex-row justify-between items-center px-5 pb-6 rounded-b-xl shadow-md"
     >
       <View>
-        <Text style={{ fontSize: hp(3) }} className="font-medium text-white">
+        <Text style={{ fontSize: hp(3.5) }} className="font-medium text-white">
           Chats
         </Text>
       </View>
@@ -47,7 +47,7 @@ export default function HomeHead() {
             }
           }}>
             <Image
-            style={{ height: hp(4.3), aspectRatio: 1, borderRadius: 100 }}
+            style={{ height: hp(5.3), aspectRatio: 1, borderRadius: 100 }}
             source={user?.profileUrl}
             placeholder={{ blurhash }}
             transition={500}
